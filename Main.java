@@ -30,8 +30,8 @@ public class Main {
 		CoucheCachee H1 = new CoucheCachee(neuroneEntree, poidsEntreeH1);
 		CoucheCachee H2 = new CoucheCachee(neuroneEntree, poidsEntreeH2);
 
-		System.out.println("Le potentiel de H1 est "+H1.getPotentiel()+" et le signal est : "+H1.getSignal());
-		System.out.println("Le potentiel de H2 est "+H2.getPotentiel()+" et le signal est : "+H2.getSignal());
+		System.out.println("Le potentiel de H1 est "+ String.format( "%.3f",H1.getPotentiel())+" et le signal est : "+ String.format( "%.3f",H1.getSignal()));
+		System.out.println("Le potentiel de H2 est "+ String.format( "%.3f",H2.getPotentiel())+" et le signal est : "+ String.format( "%.3f",H2.getSignal()));
 
 
 		CoucheCachee[] TabCouche = {H1, H2 };
@@ -41,28 +41,28 @@ public class Main {
 		sortie Y3 = new sortie(TabCouche, PotentielDeNeuroneDeSortieY3 , SortieDesireY3);
 
 
-		System.out.println("Le potentiel de H1 est "+Y1.getPotentiel()+" et le signal est : "+Y1.getSignal());
-		System.out.println("Le potentiel de H2 est "+Y2.getPotentiel()+" et le signal est : "+Y2.getSignal());
-		System.out.println("Le potentiel de H3 est "+Y3.getPotentiel()+" et le signal est : "+Y3.getSignal());
+		System.out.println("Le potentiel de Y1 est "+ String.format( "%.3f",Y1.getPotentiel())+" et le signal est : "+String.format( "%.3f",Y1.getSignal()));
+		System.out.println("Le potentiel de Y2 est "+ String.format( "%.3f",Y2.getPotentiel())+" et le signal est : "+String.format( "%.3f",Y2.getSignal()));
+		System.out.println("Le potentiel de Y3 est "+ String.format( "%.3f",Y3.getPotentiel())+" et le signal est : "+String.format( "%.3f",Y3.getSignal()));
 
 		// Etape 3
-		System.out.println("la sortie d'erreur est pour Y1 : "+Y1.calculDeLErreur());
-		System.out.println("la sortie d'erreur est pour Y2 : "+Y2.calculDeLErreur());
-		System.out.println("la sortie d'erreur est pour Y3 : "+Y3.calculDeLErreur());
+		System.out.println("la sortie d'erreur est pour Y1 : "+ String.format( "%.3f",Y1.calculDeLErreur()));
+		System.out.println("la sortie d'erreur est pour Y2 : "+ String.format( "%.3f",Y2.calculDeLErreur()));
+		System.out.println("la sortie d'erreur est pour Y3 : "+ String.format( "%.3f",Y3.calculDeLErreur()));
 
 		double ErreurGlobale = 0.5 * (Math.pow(Y1.getErreur(),2.0) + Math.pow(Y2.getErreur(),2.0) + Math.pow(Y3.getErreur(),2.0));
-		System.out.println("l'erreur globale est " + ErreurGlobale);
+		System.out.println("l'erreur globale est " +String.format( "%.3f", ErreurGlobale));
 
 		// Etape 4
-		System.out.println("Le Signal d'erreur de la couche de sortie pour Y1 : "+Y1.calculSignalErreur());
-		System.out.println("Le Signal d'erreur de la couche de sortie pour Y2 : "+Y2.calculSignalErreur());
-		System.out.println("Le Signal d'erreur de la couche de sortie pour Y3 : "+Y3.calculSignalErreur());
+		System.out.println("Le Signal d'erreur de la couche de sortie pour Y1 : "+ String.format( "%.3f",Y1.calculSignalErreur()));
+		System.out.println("Le Signal d'erreur de la couche de sortie pour Y2 : "+ String.format( "%.3f",Y2.calculSignalErreur()));
+		System.out.println("Le Signal d'erreur de la couche de sortie pour Y3 : "+ String.format( "%.3f",Y3.calculSignalErreur()));
 
 		//Etape 5
 
 		sortie[] sorties = {Y1 , Y2 , Y3 };
-		System.out.println("Calcul d'erreur de la couche cachée est : "+ H1.calculErreur(poidsConnectionSortie, sorties ));
-		System.out.println("Calcul d'erreur de la couche cachée est : "+ H2.calculErreur(poidsConnectionSortie2, sorties ));
+		System.out.println("Calcul d'erreur de la couche cachée est : "+ String.format( "%.3f",H1.calculErreur(poidsConnectionSortie, sorties )));
+		System.out.println("Calcul d'erreur de la couche cachée est : "+ String.format( "%.3f",H2.calculErreur(poidsConnectionSortie2, sorties )));
 
 
 		//Etape 6
@@ -79,17 +79,17 @@ public class Main {
 		System.out.println("Nouveau poids de sortie H1" );
 		for (int i=0; i<newValeurPoidsConnectionH1.length-1;i++)
 		{
-			System.out.print( newValeurPoidsConnectionH1[i]+ " , " );
+			System.out.print(String.format( "%.3f", newValeurPoidsConnectionH1[i])+ " , " );
 		}
-		System.out.println( newValeurPoidsConnectionH1[newValeurPoidsConnectionH1.length-1]);
+		System.out.println(String.format( "%.3f", newValeurPoidsConnectionH1[newValeurPoidsConnectionH1.length-1]));
 
 
 		System.out.println("Nouveau poids de sortie H2" );
 		for (int i=0; i<newValeurPoidsConnectionH2.length-1;i++)
 		{
-			System.out.print( newValeurPoidsConnectionH2[i]+ " , " );
+			System.out.print(String.format( "%.3f",( newValeurPoidsConnectionH2[i])) + " , ");
 		}
-		System.out.println( newValeurPoidsConnectionH2[newValeurPoidsConnectionH2.length-1]);
+		System.out.println(String.format( "%.3f", newValeurPoidsConnectionH2[newValeurPoidsConnectionH2.length-1]));
 
 
 		//Etape 7
@@ -98,17 +98,17 @@ public class Main {
 		System.out.println("Nouveau poids d'entrée  X1" );
 		for (int i=0; i<poidsEntreeH1.length-1;i++)
 		{
-			System.out.print( poidsEntreeH1[i]+ " , " );
+			System.out.print(String.format( "%.3f", poidsEntreeH1[i])+ " , " );
 		}
-		System.out.println( poidsEntreeH1[poidsEntreeH1.length-1]);
+		System.out.println(String.format( "%.3f", poidsEntreeH1[poidsEntreeH1.length-1]));
 
 		poidsEntreeH2 = H2.correctionPoidsSynaptiqueEntree(poidsEntreeH2, neuroneEntree,  eta);
 		System.out.println("Nouveau poids d'entrée  X2" );
 		for (int i=0; i<poidsEntreeH2.length-1;i++)
 		{
-			System.out.print( poidsEntreeH2[i]+ " , " );
+			System.out.print(String.format( "%.3f", poidsEntreeH2[i])+ " , " );
 		}
-		System.out.println( poidsEntreeH2[poidsEntreeH2.length-1]);
+		System.out.println(String.format( "%.3f", poidsEntreeH2[poidsEntreeH2.length-1]));
 
 
 		//Calcul Erreur globale
@@ -120,9 +120,7 @@ public class Main {
 		Y2.updatePoids(PotentielDeNeuroneDeSortieY2);
 		Y3.updatePoids(PotentielDeNeuroneDeSortieY3);
 
-		System.out.println("Nouvel signal " + H1.getSignal());
-
 		ErreurGlobale = 0.5 * (Math.pow(Y1.getErreur(),2.0) + Math.pow(Y2.getErreur(),2.0) + Math.pow(Y3.getErreur(),2.0));
-		System.out.println("Nouvelle l'erreur globale est " + ErreurGlobale);
+		System.out.println("Nouvelle l'erreur globale est " + String.format( "%.3f", ErreurGlobale ));
     }
 }
