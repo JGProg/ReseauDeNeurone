@@ -48,10 +48,12 @@ public class sortie
 	{
 		_potentielDeNeuroneDeSortie = newValuePoids;
 		calculSignalDeNeurones();
+		calculDeLErreur();
 	}
 
 	public void calculSignalDeNeurones()
 	{
+		_potentiel = 0;
 		 for( int i =0; i < _coucheCachee.length ; i++)
 		 {
 			_potentiel += _coucheCachee[i].getSignal() * _potentielDeNeuroneDeSortie[i];

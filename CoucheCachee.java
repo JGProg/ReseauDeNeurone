@@ -37,13 +37,23 @@ public class CoucheCachee
 		return _signal;
 	}
 
+	public void UpdatePoidsEntrée(double [] newValuePoids)
+	{
+		_poidsEntree = newValuePoids;
+
+		propagationAvant();
+		calculDuSignal();
+	}
+
 	//Calcul propagation avant. Attibut _potentiel attribué
 	private void propagationAvant()
 	{
+		_potentielDelaForme = 0;
 		for(int i = 0; i< _neuroneEntree.length;i++)
 		{
 			_potentielDelaForme += _neuroneEntree[i] * _poidsEntree[i];
 		}
+
 	}
 
 	// Attibut _signal attribué

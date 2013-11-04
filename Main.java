@@ -68,13 +68,13 @@ public class Main {
 		//Etape 6
 		double[] newValeurPoidsConnectionH1 = H1.correctionPoidsSynaptiqueSortie(poidsConnectionSortie, sorties, 1);
 		PotentielDeNeuroneDeSortieY1[0] = newValeurPoidsConnectionH1[0];
-		PotentielDeNeuroneDeSortieY2[0] = newValeurPoidsConnectionH1[0];
-		PotentielDeNeuroneDeSortieY3[0] = newValeurPoidsConnectionH1[0];
+		PotentielDeNeuroneDeSortieY2[0] = newValeurPoidsConnectionH1[1];
+		PotentielDeNeuroneDeSortieY3[0] = newValeurPoidsConnectionH1[2];
 
 		double[] newValeurPoidsConnectionH2 = H2.correctionPoidsSynaptiqueSortie(poidsConnectionSortie2, sorties, 1);
-		PotentielDeNeuroneDeSortieY1[0] = newValeurPoidsConnectionH2[0];
-		PotentielDeNeuroneDeSortieY2[0] = newValeurPoidsConnectionH2[0];
-		PotentielDeNeuroneDeSortieY3[0] = newValeurPoidsConnectionH2[0];
+		PotentielDeNeuroneDeSortieY1[1] = newValeurPoidsConnectionH2[0];
+		PotentielDeNeuroneDeSortieY2[1] = newValeurPoidsConnectionH2[1];
+		PotentielDeNeuroneDeSortieY3[1] = newValeurPoidsConnectionH2[2];
 
 		System.out.println("Nouveau poids de sortie H1" );
 		for (int i=0; i<newValeurPoidsConnectionH1.length-1;i++)
@@ -112,9 +112,15 @@ public class Main {
 
 
 		//Calcul Erreur globale
+
+		H1.UpdatePoidsEntrée(poidsEntreeH1);
+		H2.UpdatePoidsEntrée(poidsEntreeH2);
+
 		Y1.updatePoids(PotentielDeNeuroneDeSortieY1);
 		Y2.updatePoids(PotentielDeNeuroneDeSortieY2);
 		Y3.updatePoids(PotentielDeNeuroneDeSortieY3);
+
+		System.out.println("Nouvel signal " + H1.getSignal());
 
 		ErreurGlobale = 0.5 * (Math.pow(Y1.getErreur(),2.0) + Math.pow(Y2.getErreur(),2.0) + Math.pow(Y3.getErreur(),2.0));
 		System.out.println("Nouvelle l'erreur globale est " + ErreurGlobale);
