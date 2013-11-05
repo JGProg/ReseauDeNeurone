@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args)
 	{
 		//Etape 1
-		double[] neuroneEntree = { 0.9, 0.1, 0.9};
+		double [] neuroneEntree = { 0.9, 0.1, 0.9};
 		double [] poidsEntreeH1 = { 0.100, 0.150, 0.050 };
 		double [] poidsEntreeH2 = { 0.120, 0.180, 0.080 };
 
@@ -20,8 +20,8 @@ public class Main {
 		double [] PotentielDeNeuroneDeSortieY3 = {0.130, 0.070};
 
 
-		double[] poidsConnectionSortie2 = {PotentielDeNeuroneDeSortieY1[1],PotentielDeNeuroneDeSortieY2[1],PotentielDeNeuroneDeSortieY3[1]};
-		double[] poidsConnectionSortie = {PotentielDeNeuroneDeSortieY1[0],PotentielDeNeuroneDeSortieY2[0],PotentielDeNeuroneDeSortieY3[0]};
+		double [] poidsConnectionSortie2 = {PotentielDeNeuroneDeSortieY1[1],PotentielDeNeuroneDeSortieY2[1],PotentielDeNeuroneDeSortieY3[1]};
+		double [] poidsConnectionSortie = {PotentielDeNeuroneDeSortieY1[0],PotentielDeNeuroneDeSortieY2[0],PotentielDeNeuroneDeSortieY3[0]};
 
 		double eta = 1;
 
@@ -112,7 +112,6 @@ public class Main {
 
 
 		//Calcul Erreur globale
-
 		H1.UpdatePoidsEntrée(poidsEntreeH1);
 		H2.UpdatePoidsEntrée(poidsEntreeH2);
 
