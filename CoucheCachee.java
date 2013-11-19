@@ -18,12 +18,6 @@ public class CoucheCachee
    {
 		_neuroneEntree = neuroneEntree;
 		_poidsEntree = poidsEntree;
-
-	   // On calul le potentiel
-	   propagationAvant();
-
-	   // On calcul le signal en s'aidant du potentiel précédemment calculé
-	   calculDuSignal();
    }
 
 	//Accessors
@@ -46,7 +40,7 @@ public class CoucheCachee
 	}
 
 	//Calcul propagation avant. Attibut _potentiel attribué
-	private void propagationAvant()
+	public void propagationAvant()
 	{
 		_potentielDelaForme = 0;
 		for(int i = 0; i< _neuroneEntree.length;i++)
@@ -57,7 +51,7 @@ public class CoucheCachee
 	}
 
 	// Attibut _signal attribué
-	private void calculDuSignal()
+	public void calculDuSignal()
 	{
 		if(_potentielDelaForme != 0)
 		{

@@ -24,6 +24,7 @@ public class sortie
 		calculSignalDeNeurones();
 	}
 
+	//Accessors
 	public double getPotentiel()
 	{
 		return _potentiel;
@@ -48,9 +49,10 @@ public class sortie
 	{
 		_potentielDeNeuroneDeSortie = newValuePoids;
 		calculSignalDeNeurones();
-		calculDeLErreur();
 	}
 
+
+	//Calcul des methodes
 	public void calculSignalDeNeurones()
 	{
 		_potentiel = 0;
