@@ -47,7 +47,6 @@ public class CoucheCachee
 		{
 			_potentielDelaForme += _neuroneEntree[i] * _poidsEntree[i];
 		}
-
 	}
 
 	// Attibut _signal attribué

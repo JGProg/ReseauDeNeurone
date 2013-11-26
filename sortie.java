@@ -45,10 +45,12 @@ public class sortie
 		return _error;
 	}
 
-	public void updatePoids(double[] newValuePoids)
+	public void updatePoids(double[] newValuePoids,CoucheCachee[] couchecachee)
 	{
 		_potentielDeNeuroneDeSortie = newValuePoids;
+		_coucheCachee = couchecachee;
 		calculSignalDeNeurones();
+		calculDeLErreur();
 	}
 
 
@@ -60,10 +62,9 @@ public class sortie
 		 {
 			_potentiel += _coucheCachee[i].getSignal() * _potentielDeNeuroneDeSortie[i];
 		 }
-		if(_potentiel != 0)
-		{
+
 			_signal = 1 / ( 1 + Math.exp( - _potentiel ));
-		}
+
 	}
 
 	public double calculDeLErreur()
