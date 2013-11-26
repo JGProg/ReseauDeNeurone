@@ -4,7 +4,7 @@ Reseau de neurone
 BUT
 ___
 
-Le but de cet excercice est de faire fonctionner l'algorithme présenté dans le sujet. Il y a 7 étapes.
+Le but de cet exercice est de faire fonctionner l'algorithme présenté dans le sujet. Il y a 7 étapes.
 Dans l'élaboration de ce sujet nous avons fait en sorte qu'il soit le plus possible générique, c'est à dire que nous pouvons changer le plus de choses possible en un moindre effort.
 
 
