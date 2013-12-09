@@ -31,7 +31,7 @@ public class CoucheCachee
 		return _signal;
 	}
 
-	public void UpdatePoidsEntrée(double [] newValuePoids)
+	public void UpdatePoidsEntree( double[] newValuePoids )
 	{
 		_poidsEntree = newValuePoids;
 

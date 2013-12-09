@@ -1,11 +1,24 @@
 package pack.epsi;
 
+import java.io.*;
+
 public class Main {
 
     public static void main(String[] args)
 	{
+		System.out.println("Veuillez saisir l'erreur globale");
+		BufferedReader keyboard=new BufferedReader(new InputStreamReader(System.in));
+		String line=""; //init
+		System.out.println("Texte::");
+		try{
+			line=keyboard.readLine();//Recup du texte
+		}catch(IOException e){
+			System.out.println("err");
+		}
+
+
 		double ErreurMoyenne = 0.200;
-		double ErreurGlobale = 9;
+		double ErreurGlobale = Double.parseDouble(line);
 		int cptLoop =0;
 
 		//Etape 1
@@ -34,7 +47,7 @@ public class Main {
 		CoucheCachee H1 = new CoucheCachee(neuroneEntree, poidsEntreeH1);
 		CoucheCachee H2 = new CoucheCachee(neuroneEntree, poidsEntreeH2);
 
-		// On calul le potentiel
+		// On calcul le potentiel
 		H1.propagationAvant();
 		H2.propagationAvant();
 
@@ -42,8 +55,8 @@ public class Main {
 		H1.calculDuSignal();
 		H2.calculDuSignal();
 
-		System.out.println("Le potentiel de H1 est "+ H1.getPotentiel()+" et le signal est : "+ H1.getSignal());
-		System.out.println("Le potentiel de H2 est "+ H2.getPotentiel()+" et le signal est : "+ H2.getSignal());
+		System.out.println("Le potentiel de H1 est "+  String.format("%.3f",H1.getPotentiel())+" et le signal est : "+ String.format("%.3f",  H1.getSignal()));
+		System.out.println("Le potentiel de H2 est "+  String.format("%.3f",H2.getPotentiel())+" et le signal est : "+ String.format("%.3f",  H2.getSignal())+"\n");
 
 
 
@@ -54,14 +67,14 @@ public class Main {
 		sortie Y3 = new sortie(TabCouche, PotentielDeNeuroneDeSortieY3 , SortieDesireY3);
 
 		// Etape 3
-		System.out.println("la sortie d'erreur est pour Y1 : "+ Y1.calculDeLErreur());
-		System.out.println("la sortie d'erreur est pour Y2 : "+ Y2.calculDeLErreur());
-		System.out.println("la sortie d'erreur est pour Y3 : "+ Y3.calculDeLErreur());
+		System.out.println("la sortie d'erreur est pour Y1 : "+ String.format("%.3f",  Y1.calculDeLErreur()));
+		System.out.println("la sortie d'erreur est pour Y2 : "+ String.format("%.3f",  Y2.calculDeLErreur()));
+		System.out.println("la sortie d'erreur est pour Y3 : "+ String.format("%.3f",  Y3.calculDeLErreur()));
 
 		do
 		{
 			ErreurGlobale = 0.5 * (Math.pow(Y1.getErreur(),2.0) + Math.pow(Y2.getErreur(),2.0) + Math.pow(Y3.getErreur(),2.0));
-			System.out.println("l'erreur globale est " + ErreurGlobale);
+			System.out.println("l'erreur globale est " +  String.format("%.3f",ErreurGlobale)+"\n");
 
 			if(ErreurGlobale <= ErreurMoyenne)
 			{
@@ -70,15 +83,15 @@ public class Main {
 			else
 			{
 				// Etape 4
-				System.out.println("Le Signal d'erreur de la couche de sortie pour Y1 : "+ Y1.calculSignalErreur());
-				System.out.println("Le Signal d'erreur de la couche de sortie pour Y2 : "+ Y2.calculSignalErreur());
-				System.out.println("Le Signal d'erreur de la couche de sortie pour Y3 : "+ Y3.calculSignalErreur());
+				System.out.println("Le Signal d'erreur de la couche de sortie pour Y1 : "+ String.format("%.3f",  Y1.calculSignalErreur()));
+				System.out.println("Le Signal d'erreur de la couche de sortie pour Y2 : "+ String.format("%.3f",  Y2.calculSignalErreur()));
+				System.out.println("Le Signal d'erreur de la couche de sortie pour Y3 : "+ String.format("%.3f",  Y3.calculSignalErreur())+"\n");
 
 				//Etape 5
 
 				sortie[] sorties = {Y1 , Y2 , Y3 };
-				System.out.println("Calcul d'erreur de la couche cachée est : "+ H1.calculErreur(poidsConnectionSortie, sorties ));
-				System.out.println("Calcul d'erreur de la couche cachée est : "+ H2.calculErreur(poidsConnectionSortie2, sorties ));
+				System.out.println("Calcul d'erreur de la couche cachée est : "+ String.format("%.3f",  H1.calculErreur(poidsConnectionSortie, sorties )));
+				System.out.println("Calcul d'erreur de la couche cachée est : "+ String.format("%.3f",  H2.calculErreur(poidsConnectionSortie2, sorties )));
 
 
 				//Etape 6
@@ -98,17 +111,17 @@ public class Main {
 				System.out.println("Nouveau poids de sortie H1" );
 				for (int i=0; i<newValeurPoidsConnectionH1.length-1;i++)
 				{
-					System.out.print(newValeurPoidsConnectionH1[i]+ " , " );
+					System.out.print( String.format("%.3f",newValeurPoidsConnectionH1[i])+ " , " );
 				}
-				System.out.println(newValeurPoidsConnectionH1[newValeurPoidsConnectionH1.length-1]);
+				System.out.println( String.format("%.3f",newValeurPoidsConnectionH1[newValeurPoidsConnectionH1.length-1]));
 
 
 				System.out.println("Nouveau poids de sortie H2" );
 				for (int i=0; i<newValeurPoidsConnectionH2.length-1;i++)
 				{
-					System.out.print(newValeurPoidsConnectionH2[i] + " , ");
+					System.out.print( String.format("%.3f",newValeurPoidsConnectionH2[i]) + " , ");
 				}
-				System.out.println(newValeurPoidsConnectionH2[newValeurPoidsConnectionH2.length-1]);
+				System.out.println( String.format("%.3f",newValeurPoidsConnectionH2[newValeurPoidsConnectionH2.length-1])+"\n");
 
 
 				//Etape 7
@@ -117,21 +130,21 @@ public class Main {
 				System.out.println("Nouveau poids d'entrée  X1" );
 				for (int i=0; i<poidsEntreeH1.length-1;i++)
 				{
-					System.out.print(poidsEntreeH1[i]+ " , " );
+					System.out.print(String.format("%.3f",  poidsEntreeH1[i])+ " , " );
 				}
-				System.out.println(poidsEntreeH1[poidsEntreeH1.length-1]);
+				System.out.println( String.format("%.3f",poidsEntreeH1[poidsEntreeH1.length-1])+"\n");
 
 				poidsEntreeH2 = H2.correctionPoidsSynaptiqueEntree(poidsEntreeH2, neuroneEntree,  eta);
 				System.out.println("Nouveau poids d'entrée  X2" );
 				for (int i=0; i<poidsEntreeH2.length-1;i++)
 				{
-					System.out.print( poidsEntreeH2[i]+ " , " );
+					System.out.print( String.format("%.3f",  poidsEntreeH2[i])+ " , " );
 				}
-				System.out.println( poidsEntreeH2[poidsEntreeH2.length-1]);
+				System.out.println(  String.format("%.3f",poidsEntreeH2[poidsEntreeH2.length-1])+"\n");
 
 
-				H1.UpdatePoidsEntrée(poidsEntreeH1);
-				H2.UpdatePoidsEntrée(poidsEntreeH2);
+				H1.UpdatePoidsEntree( poidsEntreeH1 );
+				H2.UpdatePoidsEntree( poidsEntreeH2 );
 
 				CoucheCachee[] TabCouche2 = {H1, H2 };
 				Y1.updatePoids(PotentielDeNeuroneDeSortieY1,TabCouche2);
@@ -142,12 +155,12 @@ public class Main {
 			cptLoop++;
 		} while(ErreurGlobale >= ErreurMoyenne) ;
 
-		System.out.println("Le potentiel de H1 est "+ H1.getPotentiel());
-		System.out.println("Le potentiel de H2 est "+ H2.getPotentiel());
+		System.out.println("Le potentiel de H1 est "+ String.format("%.3f",  H1.getPotentiel()));
+		System.out.println("Le potentiel de H2 est "+ String.format("%.3f",  H2.getPotentiel()));
 
-		System.out.println("Le potentiel de Y1 est "+ Y1.getPotentiel()+" et le signal est : "+Y1.getSignal());
-		System.out.println("Le potentiel de Y2 est "+ Y2.getPotentiel()+" et le signal est : "+Y2.getSignal());
-		System.out.println("Le potentiel de Y3 est "+ Y3.getPotentiel()+" et le signal est : "+Y3.getSignal());
-		System.out.println("Le compteur de loop est de "+cptLoop);
+		System.out.println("Le potentiel de Y1 est "+ String.format("%.3f",  Y1.getPotentiel())+" et le signal est : "+ String.format("%.3f",Y1.getSignal()));
+		System.out.println("Le potentiel de Y2 est "+ String.format("%.3f",  Y2.getPotentiel())+" et le signal est : "+ String.format("%.3f",Y2.getSignal()));
+		System.out.println("Le potentiel de Y3 est "+ String.format("%.3f",  Y3.getPotentiel())+" et le signal est : "+ String.format("%.3f",Y3.getSignal()));
+		System.out.println("Le compteur de loop est de "+ cptLoop);
 	}
 }

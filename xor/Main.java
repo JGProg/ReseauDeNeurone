@@ -33,6 +33,8 @@ public class Main {
 		H1.calculDuSignal();
 		H2.calculDuSignal();
 
+		System.out.println("Perceptron multicouche : OR");
+
 		System.out.println("Le potentiel de H1 est "+ H1.getPotentiel()+" et le signal est : "+ H1.getSignal());
 		System.out.println("Le potentiel de H2 est "+ H2.getPotentiel()+" et le signal est : "+ H2.getSignal());
 
@@ -55,13 +57,14 @@ public class Main {
 			else
 			{
 				// Etape 4
-				System.out.println("Le Signal d'erreur de la couche de sortie pour Y1 : "+ Y1.calculSignalErreur());
+				Y1.calculSignalErreur();
+				//System.out.println("Le Signal d'erreur de la couche de sortie pour Y1 : "+ );
 
 				//Etape 5
 
 				sortie[] sorties = {Y1 };
-				System.out.println("Calcul d'erreur de la couche cachée est : "+ H1.calculErreur(poidsConnectionSortie, sorties ));
-				System.out.println("Calcul d'erreur de la couche cachée est : "+ H2.calculErreur(poidsConnectionSortie2, sorties ));
+				H1.calculErreur(poidsConnectionSortie, sorties );
+				H2.calculErreur(poidsConnectionSortie2, sorties );
 
 				//Etape 6
 				double[] newValeurPoidsConnectionH1 = H1.correctionPoidsSynaptiqueSortie(poidsConnectionSortie, sorties, eta);
@@ -73,39 +76,39 @@ public class Main {
 				PotentielDeNeuroneDeSortieY1[1] = newValeurPoidsConnectionH2[0];
 				poidsConnectionSortie2 = newValeurPoidsConnectionH2;
 
-				System.out.println("Nouveau poids de sortie H1" );
+				/*System.out.println("Nouveau poids de sortie H1" );
 				for (int i=0; i<newValeurPoidsConnectionH1.length-1;i++)
 				{
 					System.out.print(newValeurPoidsConnectionH1[i]+ " , " );
 				}
-				System.out.println(newValeurPoidsConnectionH1[newValeurPoidsConnectionH1.length-1]);
+				System.out.println(newValeurPoidsConnectionH1[newValeurPoidsConnectionH1.length-1]); */
 
 
-				System.out.println("Nouveau poids de sortie H2" );
+				/*System.out.println("Nouveau poids de sortie H2" );
 				for (int i=0; i<newValeurPoidsConnectionH2.length-1;i++)
 				{
 					System.out.print(newValeurPoidsConnectionH2[i] + " , ");
 				}
-				System.out.println(newValeurPoidsConnectionH2[newValeurPoidsConnectionH2.length-1]);
+				System.out.println(newValeurPoidsConnectionH2[newValeurPoidsConnectionH2.length-1]);  */
 
 
 				//Etape 7
 				poidsEntreeH1 = H1.correctionPoidsSynaptiqueEntree(poidsEntreeH1, neuroneEntree,  eta);
 
-				System.out.println("Nouveau poids d'entrée  X1" );
+				/*System.out.println("Nouveau poids d'entrée  X1" );
 				for (int i=0; i<poidsEntreeH1.length-1;i++)
 				{
 					System.out.print(poidsEntreeH1[i]+ " , " );
 				}
-				System.out.println(poidsEntreeH1[poidsEntreeH1.length-1]);
+				System.out.println(poidsEntreeH1[poidsEntreeH1.length-1]); */
 
 				poidsEntreeH2 = H2.correctionPoidsSynaptiqueEntree(poidsEntreeH2, neuroneEntree,  eta);
-				System.out.println("Nouveau poids d'entrée  X2" );
+				/*System.out.println("Nouveau poids d'entrée  X2" );
 				for (int i=0; i<poidsEntreeH2.length-1;i++)
 				{
 					System.out.print( poidsEntreeH2[i]+ " , " );
 				}
-				System.out.println( poidsEntreeH2[poidsEntreeH2.length-1]);
+				System.out.println( poidsEntreeH2[poidsEntreeH2.length-1]);  */
 
 
 				H1.UpdatePoidsEntrée(poidsEntreeH1);
